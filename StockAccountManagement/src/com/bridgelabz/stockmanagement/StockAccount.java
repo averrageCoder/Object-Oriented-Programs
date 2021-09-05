@@ -5,11 +5,12 @@ import java.util.ArrayList;
 
 import com.bridgelabz.datastructures.MyLinkedList;
 import com.bridgelabz.datastructures.MyNode;
+import com.bridgelabz.datastructures.MyStack;
 
 public class StockAccount {
 
 	private static ArrayList<Stock> stockAccount = new ArrayList<>();
-	private static MyLinkedList transactions = new MyLinkedList();
+	private static MyStack transactions = new MyStack();
 	
 	public StockAccount() {
 
@@ -45,7 +46,7 @@ public class StockAccount {
 				tempTransaction.setNumOfShares(amount);
 				tempTransaction.setTransactionDateTime(dateObj);
 				MyNode<CompanyShares> tempNode = new MyNode<CompanyShares>(tempTransaction);
-				transactions.add(tempNode);
+				transactions.push(tempNode);
 				flag=true;
 			}
 		}
@@ -68,7 +69,7 @@ public class StockAccount {
 					tempTransaction.setNumOfShares(amount*-1);
 					tempTransaction.setTransactionDateTime(dateObj);
 					MyNode<CompanyShares> tempNode = new MyNode<CompanyShares>(tempTransaction);
-					transactions.add(tempNode);
+					transactions.push(tempNode);
 				}
 			}
 		}
@@ -88,7 +89,7 @@ public class StockAccount {
 
 		if(transactions.getSize() > 0) {
 			System.out.println("\nTransactions: ");
-			transactions.printMyNodes();
+			transactions.popTillEmpty();
 		}
 	}
 
