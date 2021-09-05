@@ -14,6 +14,7 @@ public class StockPortfolio {
 		stockAccount.buy(10, "Reliance");
 		stockAccount.sell(3, "Idea");
 		
+		System.out.println("Report: ");
 		stockAccount.printReport();
 		
 	}
