@@ -3,14 +3,13 @@ package com.bridgelabz.stockmanagement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import com.bridgelabz.datastructures.MyLinkedList;
 import com.bridgelabz.datastructures.MyNode;
-import com.bridgelabz.datastructures.MyStack;
+import com.bridgelabz.datastructures.MyQueue;
 
 public class StockAccount {
 
 	private static ArrayList<Stock> stockAccount = new ArrayList<>();
-	private static MyStack transactions = new MyStack();
+	private static MyQueue transactions = new MyQueue();
 	
 	public StockAccount() {
 
@@ -46,7 +45,7 @@ public class StockAccount {
 				tempTransaction.setNumOfShares(amount);
 				tempTransaction.setTransactionDateTime(dateObj);
 				MyNode<CompanyShares> tempNode = new MyNode<CompanyShares>(tempTransaction);
-				transactions.push(tempNode);
+				transactions.enqueue(tempNode);
 				flag=true;
 			}
 		}
@@ -69,7 +68,7 @@ public class StockAccount {
 					tempTransaction.setNumOfShares(amount*-1);
 					tempTransaction.setTransactionDateTime(dateObj);
 					MyNode<CompanyShares> tempNode = new MyNode<CompanyShares>(tempTransaction);
-					transactions.push(tempNode);
+					transactions.enqueue(tempNode);
 				}
 			}
 		}
@@ -89,7 +88,7 @@ public class StockAccount {
 
 		if(transactions.getSize() > 0) {
 			System.out.println("\nTransactions: ");
-			transactions.popTillEmpty();
+			transactions.printQueue();
 		}
 	}
 
